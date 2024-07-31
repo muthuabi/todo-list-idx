@@ -34,7 +34,7 @@ const ToDo = () => {
   const [update, setUpdate] = useState(true);
   useEffect(() => {
     loadData();
-    requestPermission();
+    //requestPermission();
   }, []);
   //This causes Date Control not to select the Date and Time
   // useEffect(()=>{
@@ -49,6 +49,8 @@ const ToDo = () => {
   // };
   //For Media Permission which is not essential mostly
   const requestPermission = async () => {
+    if(Platform.OS==='android')
+    {
     const storagepermission = await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
       {
@@ -66,6 +68,7 @@ const ToDo = () => {
         cancelable: false,
       });
     }
+  }
     return;
   };
 
@@ -439,6 +442,7 @@ const ToDo = () => {
           <View style={mystyles.nav_tabs}>
             {tabs.map((value, index) => (
               <TouchableOpacity
+                key={index}
                 style={[
                   mystyles.btn,
                   { backgroundColor: tab == value ? '#1f8fff' : '#29c5f6' },

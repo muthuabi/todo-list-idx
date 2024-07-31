@@ -68,8 +68,8 @@ export default function AppInfo() {
         <Text style={[mystyles.text, { fontSize: 15 }]}>License</Text>
       </TouchableOpacity>
       <View style={app_info_styles.socials_container}>
-        {social_media_data.map((element) => (
-          <TouchableOpacity style={{ alignItems: 'center' }}>
+        {social_media_data.map((element,index) => (
+          <TouchableOpacity style={{ alignItems: 'center' }} key={index}>
             <Icon name={element.icon} size={25} onPress={()=>{openLink(element.url)}} />
           </TouchableOpacity>
         ))}
